@@ -1,0 +1,70 @@
+package view
+
+import (
+	"fmt"
+	"strings"
+	"time"
+)
+
+type Blog struct {
+	Id          string   `json:"id"`
+	Title       string   `json:"title"`
+	Labels      []string `json:"labels"`
+	CreatedAt   string   `json:"createdAt"`
+	LastUpdated string   `json:"lastUpdated"`
+	BlogUrl     string   `json:"blogUrl"`
+}
+
+func formatTime(date string) string {
+	toTime, _ := time.Parse(time.RFC3339, date)
+
+	toFormat := toTime.Format(time.RFC1123Z)
+
+	dates := strings.Split(toFormat, " ")
+
+	return fmt.Sprintf("%s %s, %s", dates[2], dates[1], dates[3])
+
+}
+
+templ BlogComponent(blog Blog) {
+	<div class="flex flex-col gap-2">
+		<a href={ templ.SafeURL(blog.BlogUrl) }><span class="text-lg font-bold hover:text-muted-foreground transition-all">{ blog.Title }</span></a>
+		{{ timeData := fmt.Sprintf("Created: %s | Updated: %s", formatTime(blog.CreatedAt), formatTime(blog.LastUpdated)) }}
+		<span class="text-xs text-muted-foreground">{ timeData }</span>
+		<div class="flex flex-row gap-2">
+			for _, label:= range blog.Labels {
+				<span class="uk-badge uk-badge-primary !text-xs">{ label }</span>
+			}
+		</div>
+	</div>
+}
+
+templ BlogList(blogs []Blog) {
+	if len(blogs) > 0 {
+		<div id="blog-list" class="space-y-3">
+			for _, blog:= range blogs {
+				@BlogComponent(blog)
+			}
+		</div>
+	} else {
+		<div id="blog-list" class="w-full flex justify-center">
+			<span class="text-muted-foreground">No blog found</span>
+		</div>
+	}
+}
+
+templ BlogUI(blogs []Blog) {
+	<div class="flex flex-row justify-center w-full">
+		<div class="flex flex-col gap-5 shadow-2xl rounded-2xl !w-2/3 p-5 border border-border">
+			<div class="">
+				<div class="uk-inline w-full">
+					<span class="uk-form-icon">
+						<uk-icon icon="search"></uk-icon>
+					</span>
+					<input name="search" class="uk-input" type="text" hx-get="/blog/search" hx-params="*" hx-trigger="input changed delay:500ms, keyup[key=='Enter']" hx-target="#blog-list" hx-swap="outerHTML"/>
+				</div>
+			</div>
+			@BlogList(blogs)
+		</div>
+	</div>
+}

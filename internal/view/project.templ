@@ -1,0 +1,88 @@
+package view
+
+import (
+	"maps"
+	"slices"
+)
+
+var skills = map[string][]string{
+	"Languages":         {"Go", "JavaScript", "TypeScript", "Python", "C++", "Java", "Kotlin", "SQL", "HTML/CSS", "Groovy"},
+	"Frameworks":        {"React", "Express.js", "Next.js"},
+	"Runtimes":          {"Node.js"},
+	"Databases":         {"PostgreSQL", "MongoDB", "Datastore", "Firebase"},
+	"Cloud":             {"Google Cloud Platform"},
+	"CI/CD":             {"Github Actions", "Jenkins"},
+	"Operating Systems": {"Windows", "Linux"},
+	"Tools":             {"Git", "Github", "Docker"},
+}
+
+templ Card(project Project) {
+	<div class="uk-card max-w-md !shadow-2xl !rounded-2xl">
+		<div class="uk-card-body w-full">
+			<div class="w-full flex flex-col gap-5">
+				<div class="w-full rounded-md border border-input uk-transition-toggle uk-inline-clip" tabindex="0">
+					<a href={ templ.URL(project.ImageLinkUrl) }><img src={ project.ImageUrl } class="object-cover uk-transition-scale-up uk-transition-opaque h-64 "/></a>
+				</div>
+				<div class="flex flex-row justify-between">
+					<h2 class="font-bold">{ project.Name }</h2>
+					<a href={ templ.URL(project.GithubLink) }>
+						<uk-icon icon="github" width="25" height="25" cls-custom="uk-transition-scale-up uk-transition-opaque" class="uk-transition-toggle"></uk-icon>
+					</a>
+				</div>
+				<p class="text-muted-foreground">{ project.Description }</p>
+			</div>
+		</div>
+		<div class="uk-card-footer">
+			<div class="flex flex-row gap-3 flex-wrap">
+				for _, skill:= range project.Skills {
+					<div class="p-2 rounded-2xl bg-transparent border border-input text-primary text-xs">{ skill }</div>
+				}
+			</div>
+		</div>
+	</div>
+}
+
+templ ProjectCards(projects []Project) {
+	<div class="flex flex-col gap-10 htmx-swapping:opacity-0 transition-opacity ease-out htmx-swapping:opacity-1 duration-1000" id="project-card">
+		for _, project:= range projects {
+			@Card(project)
+		}
+	</div>
+}
+
+templ Projects(projects []Project) {
+	<div class="flex flex-col gap-10 items-center">
+		<h1 class="font-bold text-5xl">Projects</h1>
+		<div class="px-5 py-2 border border-input w-fit rounded-full">
+			<ul class="uk-tab !border-b-0" data-uk-tab hx-trigger="click from: #all, #personal, #class, #open" hx-get="/project" hx-vals='js:{category:event.target.getAttribute("value")}' hx-target="#project-card" hx-swap="outerHTML">
+				<li class="uk-active"><a href="#" value="all" id="all">All</a></li>
+				<li><a href="#skills" data-uk-toggle onclick="event.stopPropagation()">Skills</a></li>
+				<li><a href="#" value="Personal Project" id="personal">Personal Projects</a></li>
+				<li><a href="#" value="Class Project" id="class">Class Projects</a></li>
+				<li><a href="#" value="Open Source" id="open">Open Source</a></li>
+			</ul>
+			<uk-command id="skill-command" toggle="skills">
+				<script>
+					
+					const e1 = document.getElementById("skill-command");
+
+					e1?.addEventListener("uk-command:click", (e) => {
+
+						htmx.ajax("GET", '/project', {target:"#project-card", swap:"outerHTML", values: {skill: e.detail.value.value}})
+					})
+				</script>
+				<select hidden>
+					for _, group:= range slices.Sorted(maps.Keys(skills)) {
+						<optgroup label={ group }>
+							{{ slices.Sort(skills[group]) }}
+							for _, skill:= range  skills[group] {
+								<option value={ skill }>{ skill }</option>
+							}
+						</optgroup>
+					}
+				</select>
+			</uk-command>
+		</div>
+		@ProjectCards(projects)
+	</div>
+}

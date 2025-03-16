@@ -1,0 +1,7 @@
+indexes:
+  - kind: Project
+    ancestor: no
+    properties:
+      - name: Skills
+      - name: FinishedAt
+        direction: desc

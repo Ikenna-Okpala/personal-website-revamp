@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Search With Go",
+    "description": "A search engine implemented by using techniques from natural language processing such as TF-IDF, information retrieval such as inverted indexes, and web scraping such as politeness.",
+    "skills": [
+      "Go",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Google Cloud Platform"
+    ],
+    "imageUrl": "",
+    "githubLink": "https://github.com/Ikenna-Okpala/search-with-go",
+    "category": "Personal Project",
+    "imageLinkUrl": "https://github.com/Ikenna-Okpala/search-with-go",
+    "finishedAt": "2024-12-24T01:44:36.438Z"
+  },
+  {
+    "name": "Portfolio",
+    "description": "A personal CMS system with an API layer by using only the Go programming language.",
+    "skills": ["Go", "Htmx", "Google Cloud Platform", "Datastore"],
+    "imageUrl": "",
+    "githubLink": "https://github.com/Ikenna-Okpala/personal-website-revamp",
+    "category": "Personal Project",
+    "imageLinkUrl": "/",
+    "finishedAt": "2025-02-24T01:44:36.438Z"
+  },
+  {
+    "name": "HHA Haiti",
+    "description": "A web application that provides data insights of health reports to Haitian hospitals",
+    "skills": [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "MongoDB",
+      "Docker",
+      "Github Actions"
+    ],
+    "imageUrl": "",
+    "githubLink": "https://github.sfu.ca/bfraser/415-HHA-Haiti",
+    "category": "Open Source",
+    "imageLinkUrl": "https://github.sfu.ca/bfraser/415-HHA-Haiti",
+    "finishedAt": "2024-08-24T01:44:36.438Z"
+  },
+  {
+    "name": "Board Talk",
+    "description": "A cloud-native app that is a discussion forum where cloassmates can collaborate on a whiteboard by adopting a microservice approach for system design.",
+    "skills": [
+      "React",
+      "Node.js",
+      "Datastore",
+      "Google Cloud Platform",
+      "Docker"
+    ],
+    "imageUrl": "",
+    "githubLink": "https://github.com/Parm-S-Gidda/Board-Talk",
+    "category": "Class Project",
+    "imageLinkUrl": "https://docs.google.com/presentation/d/1D6KFliy6-e9LUblj8eAjnlZJ39nV-cpk0ncGgBzV9OQ/edit?usp=sharing",
+    "finishedAt": "2024-04-24T01:44:36.438Z"
+  },
+  {
+    "name": "VidThing",
+    "description": "A personalized video chat app used to chat with friends and family.",
+    "skills": ["React", "Node.js", "JavaScript"],
+    "imageUrl": "",
+    "githubLink": "https://github.com/Ikenna-Okpala/video-chat",
+    "category": "Personal Project",
+    "imageLinkUrl": "https://github.com/Ikenna-Okpala/video-chat",
+    "finishedAt": "2023-03-24T01:44:36.438Z"
+  },
+  {
+    "name": "Stylish",
+    "description": "A fashion e-commerce site where users can shop for clothes using cart and payment features.",
+    "skills": ["React", "JavaScript", "Firebase"],
+    "imageUrl": "",
+    "githubLink": "https://github.com/Ikenna-Okpala/Stylish",
+    "category": "Personal Project",
+    "imageLinkUrl": "https://github.com/Ikenna-Okpala/Stylish",
+    "finishedAt": "2022-12-24T01:44:36.438Z"
+  },
+  {
+    "name": "Tour Quest",
+    "description": "A tour booking site and API that enables tourists to find highly-rated tours near them. 40 REST API endpoints were built to support tourists.",
+    "skills": ["Node.js", "JavaScript", "Express.js"],
+    "imageUrl": "",
+    "githubLink": "https://github.com/Ikenna-Okpala/Tour-Quest",
+    "category": "Personal Project",
+    "imageLinkUrl": "https://github.com/Ikenna-Okpala/Tour-Quest",
+    "finishedAt": "2022-08-24T01:44:36.438Z"
+  },
+  {
+    "name": "Demon Tower",
+    "description": "A 2D arcade game where a player collects powerups to survive enemy attacks before completing the game.",
+    "skills": ["Java"],
+    "imageUrl": "",
+    "githubLink": "https://github.com/Ikenna-Okpala/Software-Engineering-Project",
+    "category": "Class Project",
+    "imageLinkUrl": "https://docs.google.com/presentation/d/1p5KTn-y4zLqgtRaTne8cZ0usUcXdjyIPQVf6KQ-67VA/edit?usp=sharing",
+    "finishedAt": "2022-04-24T01:44:36.438Z"
+  }
+]

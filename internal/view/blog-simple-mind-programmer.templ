@@ -1,0 +1,131 @@
+package view
+
+import "html"
+
+var htmxContent = `
+<div>
+	<div id="counter">
+		{{.Counter}}
+	</div>
+	<div>
+		<button hx-target="#counter" hx-post="/decrease" hx-swap="outerHTML">
+			Decrease -
+		</button>
+		<button hx-target="#counter" hx-post="/increase" hx-swap="outerHTML">
+			Increase +
+		</button>
+	</div>
+</div>
+
+`
+
+var reactContent = `
+  const Counter = () => {  
+  const [count, setCount] = useState(0);  
+
+  const increment = () => setCount((prevCount) => prevCount + 1);  
+  const decrement = () => setCount((prevCount) => prevCount - 1);  
+  
+
+  return (  
+    <div>  
+      <h2>Count: {count}</h2>  
+      <button onClick={increment}>Increment</button>  
+      <button onClick={decrement}>Decrement</button>  
+    </div>  
+  );  
+}; 
+
+`
+
+var javaScriptContent = `
+const date = new Date()
+
+// desired format: Tue, 12 May 2020 23:50:21 GMT
+
+const formattedDate = date.toUTCString();
+
+`
+
+var goTime = `
+date:= time.Now()
+formattedDate:= date.Format(time.RFC1123)
+
+`
+
+templ BlogSimpleMindProgrammer() {
+	<div class="flex flex-col gap-8 px-64">
+		<div class="flex flex-col gap-5">
+			<h1 class="text-4xl text-foreground font-bold">The Simple Mind of a Programmer</h1>
+			<span class="text-sm text-muted-foreground">March 2, 2025 | 3 min read</span>
+			<div class="flex flex-row gap-2">
+				<span class="uk-badge uk-badge-primary !text-xs">Philosophy</span>
+				<span class="uk-badge uk-badge-primary !text-xs">Go</span>
+				<span class="uk-badge uk-badge-primary !text-xs">HTMX</span>
+				<span class="uk-badge uk-badge-primary !text-xs">React</span>
+			</div>
+		</div>
+		<p class="text-lg text-muted-foreground">
+			I got into web development during the MERN stack days by following trends.
+			For the past 3 years, I have been building apps with Node.js and React. I had so much fun because I could implement features quickly.
+			Need a countdown feature? With some npm libraries and React magic, I could implement this feature in minutes. Easy right? But where is this simplicity taking me too?
+			All I can remember is a confused developer who is too scared to make changes because it can break dependency code. I am not writing to discredit React or TypeScript.
+			Infact, I respect React's impact on the frontend ecosystem, and I occassionally write TypeScript. Rather, I am advocating for simplicity in programming&mdash;where abstractions empower us to solve complex problems.
+		</p>
+		<p class="text-lg text-muted-foreground">
+			I define simplicity as being easy to understand. In software, simple programs are easy to reason about correctness.
+			Let's understand simplicity through implementing a counter app with HTMX and React.
+		</p>
+		<span class="text-lg text-muted-foreground">HTMX:</span>
+		<pre>
+			<code class="language-html">
+				@templ.Raw(html.EscapeString(htmxContent))
+			</code>
+		</pre>
+		<span class="text-lg text-muted-foreground">React:</span>
+		<pre>
+			<code class="language-jsx">
+				@templ.Raw(html.EscapeString(reactContent))
+			</code>
+		</pre>
+		<p class="text-lg text-muted-foreground">
+			Which example is simpler React or HTMX? Yes, HTMX is easier to digest. A HTMX newbie can intuit <span class="text-md text-primary">div id="counter"</span> will be updated with the most recent <span class="text-md text-primary">counter</span> value.
+			On the contrary, it is not as straightforward to see that the <span class="text-md text-primary">Counter</span> component will be updated with the most recent <span class="text-md text-primary">counter</span> value.
+			When program interfaces guide the programmer towards a concrete understanding of how things work, programmers are well-equipped to compose the interface to solve more challenging problems like building a house on a solid rock.
+			Magical interfaces are easy to use and increase developer experience allegedly like building a house on sand.  But when feature requests, bug reports, and onboarding comes, guess whose house is still standing strong?
+		</p>
+		<h1 class="text-md text-foreground font-bold">Simplicity is not information hiding</h1>
+		<p class="text-lg text-muted-foreground">
+			Simple programs are used to solve complex problems. If a programmer uses complex programs then it gets difficult to solve complex problems.
+			However, what appears to be easy is not necessarily simple as discussed in the previous example. Let's use the example of formatting dates using the standard library of JavaScript and Go.
+		</p>
+		<p class="text-lg text-muted-foreground">JavaScript:</p>
+		<pre>
+			<code class="language-js">
+				@templ.Raw(html.EscapeString(javaScriptContent))
+			</code>
+		</pre>
+		<p class="text-lg text-muted-foreground">
+			The code is easy to read, but hard to understand the time format represented. 
+			Last time I checked, <span class="text-md text-primary">UTCString</span> is not a standardized date format.
+			As a result, false assumptions will be made about how  <span class="text-md text-primary">formattedDate</span> is represented in the programmer's code, eventually leading to buggy feature implementation that relied on this assumption.
+			A good abstracton makes it easy for programmers to have correction assumptions of how their code code works. The Go <span class="text-md text-primary">time</span> package gets it right.
+		</p>
+		<pre>
+			<code class="language-js">
+				@templ.Raw(html.EscapeString(goTime))
+			</code>
+		</pre>
+		<p class="text-lg text-muted-foreground">
+			At first glance, this example doesn't look easier than the previous example.
+			What is a <span class="text-md text-primary">RFC1123</span>?
+			Good, the API gets you thinking about how it works.
+			It is safe to say that a programmer is more likely to look up <span class="text-md text-primary">RFC1123</span> than <span class="text-md text-primary">UTCString</span>. 
+			Now, the programmmer can build more advanced features that depend on the correct assumptions of how <span class="text-md text-primary">formattedDate</span> is represented. Correct assumptions equals correct implementation.
+		</p>
+		<p class="text-lg text-muted-foreground">
+			Today, there is so much complexity in software. 
+			For this reason, programmers should adopt simplicity as a mindset when building interfaces, so other programmers can build simpler programs&mdash;the cycle continues.
+		</p>
+	</div>
+}

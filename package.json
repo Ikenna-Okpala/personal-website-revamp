@@ -1,0 +1,16 @@
+{
+  "name": "personal-website-revamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "franken-ui": "^1.1.0",
+    "postcss": "^8.5.1",
+    "prism-material-themes": "^1.0.5"
+  }
+}

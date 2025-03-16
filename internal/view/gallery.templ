@@ -1,0 +1,23 @@
+package view
+
+type Photo struct {
+	Id        string `json:"id"`
+	Url       string `json:"url"`
+	CreatedAt string `json:"createdAt"`
+	Caption   string `json:"caption"`
+}
+
+templ Gallery(photos []Photo) {
+	<div class="w-full flex justify-center">
+		<div class="grid grid-cols-3 gap-8 w-full max-w-[1000px]" data-uk-lightbox="animation: slide; slidenav: true">
+			for _, photo := range photos {
+				//text-center, so tailwind willl generate css output so caption can be centered
+				<div class="uk-transition-toggle uk-inline-clip size-80 rounded-xl text-center">
+					<a class="uk-inline" href={ templ.URL(photo.Url) } data-caption={ photo.Caption }>
+						<img class="object-cover size-80 rounded-xl shadow-sm uk-transition-scale-up uk-transition-opaque" src={ photo.Url }/>
+					</a>
+				</div>
+			}
+		</div>
+	</div>
+}
