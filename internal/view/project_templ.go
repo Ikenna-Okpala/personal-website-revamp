@@ -107,20 +107,20 @@ func Card(project Project) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		for _, skill := range project.Skills {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<div class=\"p-2 rounded-2xl bg-transparent border border-input text-primary text-xs\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<span class=\"uk-badge uk-badge-primary !text-xs\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(skill)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/view/project.templ`, Line: 38, Col: 97}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/view/project.templ`, Line: 38, Col: 61}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -193,7 +193,7 @@ func Projects(projects []Project) templ.Component {
 			templ_7745c5c3_Var9 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"flex flex-col gap-10 items-center\"><h1 class=\"font-bold text-5xl\">Projects</h1><div class=\"px-5 py-2 border border-input w-fit rounded-full\"><ul class=\"uk-tab !border-b-0\" data-uk-tab hx-trigger=\"click from: #all, #personal, #class, #open\" hx-get=\"/project\" hx-vals=\"js:{category:event.target.getAttribute(&#34;value&#34;)}\" hx-target=\"#project-card\" hx-swap=\"outerHTML\"><li class=\"uk-active\"><a href=\"#\" value=\"all\" id=\"all\">All</a></li><li><a href=\"#skills\" data-uk-toggle onclick=\"event.stopPropagation()\">Skills</a></li><li><a href=\"#\" value=\"Personal Project\" id=\"personal\">Personal Projects</a></li><li><a href=\"#\" value=\"Class Project\" id=\"class\">Class Projects</a></li><li><a href=\"#\" value=\"Open Source\" id=\"open\">Open Source</a></li></ul><uk-command id=\"skill-command\" toggle=\"skills\"><script>\r\n\t\t\t\t\t\r\n\t\t\t\t\tconst e1 = document.getElementById(\"skill-command\");\r\n\r\n\t\t\t\t\te1?.addEventListener(\"uk-command:click\", (e) => {\r\n\r\n\t\t\t\t\t\thtmx.ajax(\"GET\", '/project', {target:\"#project-card\", swap:\"outerHTML\", values: {skill: e.detail.value.value}})\r\n\t\t\t\t\t})\r\n\t\t\t\t</script><select hidden>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<div class=\"flex flex-col gap-10 items-center\"><h1 class=\"font-bold text-5xl\">Projects</h1><div class=\"px-5 py-2 border border-input w-fit rounded-full\"><ul class=\"uk-tab\" data-uk-tab hx-trigger=\"click from: #all, #personal, #class, #open\" hx-get=\"/project\" hx-vals=\"js:{category:event.target.getAttribute(&#34;value&#34;)}\" hx-target=\"#project-card\" hx-swap=\"outerHTML\"><li class=\"uk-active\"><a href=\"#\" value=\"all\" id=\"all\">All</a></li><li><a href=\"#skills\" data-uk-toggle onclick=\"event.stopPropagation()\">Skills</a></li><li><a href=\"#\" value=\"Personal Project\" id=\"personal\">Personal Projects</a></li><li><a href=\"#\" value=\"Class Project\" id=\"class\">Class Projects</a></li><li><a href=\"#\" value=\"Open Source\" id=\"open\">Open Source</a></li></ul><uk-command id=\"skill-command\" toggle=\"skills\"><script>\r\n\t\t\t\t\t\r\n\t\t\t\t\tconst e1 = document.getElementById(\"skill-command\");\r\n\r\n\t\t\t\t\te1?.addEventListener(\"uk-command:click\", (e) => {\r\n\r\n\t\t\t\t\t\thtmx.ajax(\"GET\", '/project', {target:\"#project-card\", swap:\"outerHTML\", values: {skill: e.detail.value.value}})\r\n\t\t\t\t\t})\r\n\t\t\t\t</script><select hidden>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

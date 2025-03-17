@@ -35,7 +35,7 @@ templ Card(project Project) {
 		<div class="uk-card-footer">
 			<div class="flex flex-row gap-3 flex-wrap">
 				for _, skill:= range project.Skills {
-					<div class="p-2 rounded-2xl bg-transparent border border-input text-primary text-xs">{ skill }</div>
+					<span class="uk-badge uk-badge-primary !text-xs">{ skill }</span>
 				}
 			</div>
 		</div>
@@ -54,7 +54,7 @@ templ Projects(projects []Project) {
 	<div class="flex flex-col gap-10 items-center">
 		<h1 class="font-bold text-5xl">Projects</h1>
 		<div class="px-5 py-2 border border-input w-fit rounded-full">
-			<ul class="uk-tab !border-b-0" data-uk-tab hx-trigger="click from: #all, #personal, #class, #open" hx-get="/project" hx-vals='js:{category:event.target.getAttribute("value")}' hx-target="#project-card" hx-swap="outerHTML">
+			<ul class="uk-tab" data-uk-tab hx-trigger="click from: #all, #personal, #class, #open" hx-get="/project" hx-vals='js:{category:event.target.getAttribute("value")}' hx-target="#project-card" hx-swap="outerHTML">
 				<li class="uk-active"><a href="#" value="all" id="all">All</a></li>
 				<li><a href="#skills" data-uk-toggle onclick="event.stopPropagation()">Skills</a></li>
 				<li><a href="#" value="Personal Project" id="personal">Personal Projects</a></li>
