@@ -65,17 +65,15 @@ templ App(title string, content templ.Component) {
 			<script src="https://unpkg.com/franken-ui@2.0.0-internal.45/dist/js/icon.iife.js" type="module"></script>
 			<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 		</head>
-		<script>
-		var socket = new WebSocket("ws://localhost:8080/live")
-
-	socket.onclose = (event) => {
-		console.log("The conn has been closed....")
-		
-		setTimeout(() => {
-			location.reload()
-		}, 3000)
-	}
-		</script>
+		// 	<script>
+		// 	var socket = new WebSocket("ws://localhost:8080/live")
+		// socket.onclose = (event) => {
+		// 	console.log("The conn has been closed....")
+		// 	setTimeout(() => {
+		// 		location.reload()
+		// 	}, 3000)
+		// }
+		// 	</script>
 		<body class="bg-background text-foreground max-lg:overflow-x-scroll min-w-[1100px]">
 			@Nav()
 			<div id="tab-switcher" class="flex flex-col pt-28 px-32 pb-20 w-full justify-center">

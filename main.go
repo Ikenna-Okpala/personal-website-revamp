@@ -990,7 +990,7 @@ func main() {
 	err:= godotenv.Load()
 
 	if err != nil {
-		log.Fatalln("Could not load ENV variables")
+		log.Println("Could not load ENV variables")
 	}
 
 	server:= Server{
@@ -1004,7 +1004,7 @@ func main() {
 
 	http.HandleFunc("/", server.Home)
 
-	http.HandleFunc("/live", server.LiveReload)
+	//http.HandleFunc("/live", server.LiveReload)
 
 	http.HandleFunc("POST /api/v1/email", server.Email)
         
@@ -1045,13 +1045,16 @@ func main() {
 
 	http.HandleFunc("DELETE /api/v1/photo/{id}", server.Auth(server.DeletePhoto))
 
-	fmt.Println("Listening on port: 8080")
+	port:= os.Getenv("PORT")
 
-	err2:= http.ListenAndServe("localhost:8080", nil)
+	fmt.Println("Listening on port: ", port)
+
+	err2:= http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
 
 	if err2 != nil {
 		panic(err2)  
 	}
+
 
 	
 
