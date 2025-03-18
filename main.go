@@ -424,7 +424,7 @@ func (s Server) Home(w http.ResponseWriter, r * http.Request){
 	hx:= r.Header.Get("HX-Request")
 
 	if hx == ""{
-		view.App("Ikenna's Portfolio", view.About(projects)).Render(r.Context(), w)
+		view.App("Ikenna Okpala", view.About(projects)).Render(r.Context(), w)
 	}else{
 		view.About(projects).Render(r.Context(), w)
 	}
@@ -706,7 +706,7 @@ func (s Server) Blog(w http.ResponseWriter, r * http.Request){
 	hx:= r.Header.Get("HX-Request")
 
 	if hx == ""{
-		view.App("Ikenna's Portfolio", view.BlogUI(blogs)).Render(r.Context(), w)
+		view.App("Ikenna Okpala", view.BlogUI(blogs)).Render(r.Context(), w)
 
 	}else{
 	view.BlogUI(blogs).Render(r.Context(), w)
@@ -732,7 +732,7 @@ func (s Server) BlogSearch(w http.ResponseWriter, r * http.Request){
 
 func (s Server) BlogTheSimpleMindOfAProgrammer(w http.ResponseWriter, r * http.Request){
 
-	view.App("Ikenna's Portfolio", view.BlogSimpleMindProgrammer()).Render(r.Context(), w)
+	view.App("Ikenna Okpala", view.BlogSimpleMindProgrammer()).Render(r.Context(), w)
 }
 
 func (s Server) Gallery(w http.ResponseWriter, r * http.Request){
@@ -754,7 +754,7 @@ func (s Server) Gallery(w http.ResponseWriter, r * http.Request){
 	hx:= r.Header.Get("HX-Request")
 
 	if hx == ""{
-		view.App("Ikenna's Portfolio", view.Gallery(*photos)).Render(r.Context(), w)
+		view.App("Ikenna Okpala", view.Gallery(*photos)).Render(r.Context(), w)
 	}else{
 		view.Gallery(*photos).Render(r.Context(), w)
 	}
